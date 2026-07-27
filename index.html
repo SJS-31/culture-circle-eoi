@@ -321,6 +321,14 @@ document.querySelectorAll('input[name=previouslyInvested]').forEach(r =>
 
 function fieldVal(name){ return form.elements[name] ? form.elements[name].value.trim() : ''; }
 
+// leading = + - @ would be parsed as a formula by Google Sheets; apostrophe forces text
+function escapeForSheet(d){
+  const esc = v => (typeof v === 'string' && /^[=+\-@]/.test(v)) ? "'" + v : v;
+  const out = {};
+  for (const k in d) out[k] = Array.isArray(d[k]) ? d[k].map(esc) : esc(d[k]);
+  return out;
+}
+
 function collect(){
   const inv = $('input[name=investmentValue]:checked');
   const support = [...document.querySelectorAll('input[name=supportAreas]:checked')]
@@ -380,7 +388,7 @@ form.addEventListener('submit', async e => {
     const res = await fetch(ENDPOINT, {
       method: 'POST',
       headers: {'Content-Type': 'text/plain;charset=utf-8'},
-      body: JSON.stringify(d)
+      body: JSON.stringify(escapeForSheet(d))
     });
     const out = await res.json();
     if (!out.ok) throw new Error(out.error || 'submit failed');
