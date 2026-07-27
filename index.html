@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Culture Circle — Expression of Interest</title>
+<meta name="description" content="Limited Investor Allocation. Culture Circle is opening a select allocation to individuals from our community. This form is an application, not an offer.">
+<meta property="og:title" content="Culture Circle — Expression of Interest">
+<meta property="og:description" content="Limited Investor Allocation. This form is an application, not an offer.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://sjs-31.github.io/culture-circle-eoi/og-image.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='44' fill='none' stroke='%23c8a45f' stroke-width='6'/%3E%3Ctext x='50' y='63' font-size='42' text-anchor='middle' fill='%23c8a45f' font-family='Georgia,serif'%3ECC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0d0c0a; --surface:#141310; --ink:#ece7dd; --muted:#a39a86; --faint:#6e6757;
+    --gold:#c8a45f; --gold-soft:rgba(200,164,95,.35); --hairline:rgba(200,164,95,.16);
+    --err:#e07a5f;
+    --serif:"Fraunces",Georgia,serif; --sans:"Inter",-apple-system,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans); font-weight:300;
+    font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(1200px 600px at 70% -10%, rgba(200,164,95,.07), transparent 60%),
+                     radial-gradient(900px 500px at -10% 30%, rgba(200,164,95,.04), transparent 55%);
+  }
+  .wrap{max-width:720px;margin:0 auto;padding:0 24px}
+
+  /* ---------- header / hero ---------- */
+  header{padding:56px 0 0;text-align:center}
+  .brandmark{display:inline-flex;align-items:center;gap:14px;letter-spacing:.42em;text-indent:.42em;
+    font-size:12px;font-weight:500;color:var(--gold);text-transform:uppercase}
+  .brandmark::before,.brandmark::after{content:"";width:48px;height:1px;background:var(--hairline)}
+  .hero{padding:44px 0 8px;text-align:center}
+  .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(40px,7vw,64px);line-height:1.08;letter-spacing:-.01em}
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero .tag{margin-top:20px;font-size:12px;letter-spacing:.32em;text-indent:.32em;text-transform:uppercase;color:var(--muted)}
+  .keyfacts{display:flex;justify-content:center;gap:0;margin:44px auto 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+  .keyfacts div{flex:1;padding:22px 12px;text-align:center}
+  .keyfacts div+div{border-left:1px solid var(--hairline)}
+  .keyfacts b{display:block;font-family:var(--serif);font-weight:500;font-size:21px;color:var(--ink)}
+  .keyfacts span{display:block;margin-top:6px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+  .intro{padding:44px 0 12px;color:var(--muted);font-size:15.5px}
+  .intro p+p{margin-top:16px}
+  .intro .standfirst{font-family:var(--serif);font-weight:300;font-size:20px;line-height:1.55;color:var(--ink)}
+  .notice{margin:36px 0 8px;padding:22px 26px;border:1px solid var(--hairline);background:var(--surface);font-size:14.5px;color:var(--muted)}
+  .notice b{color:var(--gold);font-weight:500}
+
+  /* ---------- form ---------- */
+  form{padding:28px 0 80px}
+  .section{margin-top:56px}
+  .sec-head{display:flex;align-items:baseline;gap:18px;border-bottom:1px solid var(--hairline);padding-bottom:14px;margin-bottom:30px}
+  .sec-head .num{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--gold)}
+  .sec-head h2{font-family:var(--serif);font-weight:400;font-size:24px;letter-spacing:.01em}
+  .field{margin-bottom:26px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}}
+  label.lbl{display:block;font-size:11.5px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  label.lbl .req{color:var(--gold)}
+  .hint{font-size:13px;color:var(--faint);margin-top:8px}
+  .hint a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+  input[type=text],input[type=email],input[type=tel],textarea{
+    width:100%;background:transparent;border:0;border-bottom:1px solid rgba(236,231,221,.22);
+    color:var(--ink);font-family:var(--sans);font-weight:300;font-size:16.5px;padding:8px 2px 10px;
+    border-radius:0;transition:border-color .25s}
+  textarea{border:1px solid rgba(236,231,221,.18);padding:14px 16px;min-height:110px;resize:vertical;background:rgba(255,255,255,.015)}
+  input:focus,textarea:focus{outline:none;border-color:var(--gold)}
+  input::placeholder,textarea::placeholder{color:#57503f;opacity:1}
+
+  /* choice cards */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+  @media(max-width:600px){.cards{grid-template-columns:repeat(2,1fr)}}
+  .cards label{position:relative;display:block;cursor:pointer}
+  .cards input{position:absolute;opacity:0;pointer-events:none}
+  .cards .card{display:block;text-align:center;padding:16px 8px;border:1px solid rgba(236,231,221,.16);
+    font-family:var(--serif);font-size:17px;font-weight:400;color:var(--muted);transition:all .2s}
+  .cards input:checked+.card{border-color:var(--gold);color:var(--gold);background:rgba(200,164,95,.07)}
+  .cards label:hover .card{border-color:var(--gold-soft)}
+
+  /* chips */
+  .chips{display:flex;flex-wrap:wrap;gap:10px}
+  .chips label{position:relative;cursor:pointer}
+  .chips input{position:absolute;opacity:0;pointer-events:none}
+  .chips .chip{display:block;padding:9px 18px;border:1px solid rgba(236,231,221,.16);border-radius:999px;
+    font-size:14px;color:var(--muted);transition:all .2s}
+  .chips input:checked+.chip{border-color:var(--gold);color:var(--gold);background:rgba(200,164,95,.07)}
+  .chips label:hover .chip{border-color:var(--gold-soft)}
+
+  /* yes/no */
+  .seg{display:inline-flex;border:1px solid rgba(236,231,221,.16)}
+  .seg label{position:relative;cursor:pointer}
+  .seg input{position:absolute;opacity:0;pointer-events:none}
+  .seg span{display:block;padding:10px 34px;font-size:14px;color:var(--muted);transition:all .2s}
+  .seg label+label span{border-left:1px solid rgba(236,231,221,.16)}
+  .seg input:checked+span{color:var(--gold);background:rgba(200,164,95,.08)}
+
+  /* acknowledgements */
+  .acks{border:1px solid var(--hairline);background:var(--surface);padding:8px 26px}
+  .ack{display:flex;gap:16px;align-items:flex-start;padding:18px 0;cursor:pointer}
+  .ack+.ack{border-top:1px solid rgba(200,164,95,.1)}
+  .ack input{position:absolute;opacity:0;pointer-events:none}
+  .ack .box{flex:0 0 auto;width:20px;height:20px;margin-top:2px;border:1px solid rgba(236,231,221,.35);
+    display:grid;place-items:center;transition:all .2s;font-size:13px;color:transparent}
+  .ack input:checked~.box{border-color:var(--gold);background:var(--gold);color:#0d0c0a}
+  .ack p{font-size:14.5px;color:var(--muted)}
+  .ack input:checked~p{color:var(--ink)}
+
+  .other-in{margin-top:12px;display:none}
+  .other-in.show{display:block}
+
+  /* errors */
+  .field.invalid input,.field.invalid textarea{border-color:var(--err)}
+  .err-msg{display:none;font-size:12.5px;color:var(--err);margin-top:8px;letter-spacing:.02em}
+  .field.invalid .err-msg{display:block}
+  .form-error{display:none;margin-top:22px;padding:16px 20px;border:1px solid var(--err);color:var(--err);font-size:14px}
+  .form-error.show{display:block}
+
+  /* submit */
+  .submit-row{margin-top:52px;text-align:center}
+  button.submit{
+    font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.3em;text-indent:.3em;text-transform:uppercase;
+    color:#0d0c0a;background:var(--gold);border:1px solid var(--gold);padding:20px 58px;cursor:pointer;transition:all .25s}
+  button.submit:hover{background:transparent;color:var(--gold)}
+  button.submit:disabled{opacity:.45;cursor:wait}
+  .submit-note{margin-top:18px;font-size:12.5px;color:var(--faint)}
+
+  /* success */
+  #success{display:none;text-align:center;padding:110px 0 140px}
+  #success .ring{width:74px;height:74px;margin:0 auto 36px;border:1px solid var(--gold);border-radius:50%;
+    display:grid;place-items:center;font-size:26px;color:var(--gold)}
+  #success h2{font-family:var(--serif);font-weight:300;font-size:clamp(30px,5vw,42px)}
+  #success p{margin:22px auto 0;max-width:480px;color:var(--muted);font-size:15.5px}
+
+  footer{border-top:1px solid var(--hairline);padding:34px 0 46px;text-align:center;
+    font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+  footer a{color:var(--faint);text-decoration:none}
+  .hp{position:absolute;left:-9999px;opacity:0}
+</style>
+</head>
+<body>
+
+<header class="wrap"><div class="brandmark">Culture Circle</div></header>
+
+<main class="wrap" id="main">
+  <section class="hero">
+    <h1>Expression of <em>Interest</em></h1>
+    <div class="tag">Limited Investor Allocation</div>
+    <div class="keyfacts">
+      <div><b>₹50 Lakh</b><span>Minimum ticket</span></div>
+      <div><b>20% Discount</b><span>Convertible note</span></div>
+      <div><b>7 Days</b><span>Shortlist response</span></div>
+    </div>
+  </section>
+
+  <section class="intro">
+    <p class="standfirst">Thank you for your interest in becoming part of Culture Circle's journey. This allocation is being made available to a select group of individuals from our community who believe in our long-term vision and would like to participate in our next phase of growth.</p>
+    <p>Info Edge Ventures (an early, major backer of Zomato) and IIMA Ventures are committed to this round, and the one after it. The standard ticket is a ₹50 lakh convertible note, converting at a 20% discount to the ₹1000 Cr round.</p>
+    <div class="notice">
+      <b>The allocation is oversubscribed.</b> We are not looking for capital, we are choosing partners. This form is an application, not an offer. Allocations go to the few applicants who bring the most beyond money. Shortlisted applicants hear from us within 7 days. We do not respond to every application.
+    </div>
+  </section>
+
+  <form id="eoi" novalidate>
+    <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off">
+
+    <div class="section">
+      <div class="sec-head"><span class="num">I.</span><h2>Personal Details</h2></div>
+      <div class="grid2">
+        <div class="field" data-f="fullName">
+          <label class="lbl" for="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="fullName" name="fullName" autocomplete="name">
+          <div class="err-msg">Please enter your full name.</div>
+        </div>
+        <div class="field" data-f="email">
+          <label class="lbl" for="email">Email <span class="req">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email">
+          <div class="err-msg">Please enter a valid email address.</div>
+        </div>
+        <div class="field" data-f="mobile">
+          <label class="lbl" for="mobile">Mobile Number <span class="req">*</span></label>
+          <input type="tel" id="mobile" name="mobile" autocomplete="tel" placeholder="+91">
+          <div class="err-msg">Please enter a valid mobile number.</div>
+        </div>
+        <div class="field" data-f="city">
+          <label class="lbl" for="city">City of Residence <span class="req">*</span></label>
+          <input type="text" id="city" name="city">
+          <div class="err-msg">Please enter your city.</div>
+        </div>
+        <div class="field" data-f="occupation">
+          <label class="lbl" for="occupation">Current Occupation / Company <span class="req">*</span></label>
+          <input type="text" id="occupation" name="occupation" autocomplete="organization">
+          <div class="err-msg">Please enter your occupation or company.</div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="profile">LinkedIn / Instagram Profile</label>
+          <input type="text" id="profile" name="profile" placeholder="URL or handle">
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span class="num">II.</span><h2>Investment Intent</h2></div>
+      <div class="field" data-f="investmentValue">
+        <label class="lbl">If shortlisted, what investment value would you be interested in committing? <span class="req">*</span></label>
+        <div class="hint" style="margin:0 0 14px">To be transferred within 7–10 days of allocation.</div>
+        <div class="cards" id="invCards">
+          <label><input type="radio" name="investmentValue" value="₹50 Lakhs"><span class="card">₹50 Lakhs</span></label>
+          <label><input type="radio" name="investmentValue" value="₹75 Lakhs"><span class="card">₹75 Lakhs</span></label>
+          <label><input type="radio" name="investmentValue" value="₹1 Crore"><span class="card">₹1 Crore</span></label>
+          <label><input type="radio" name="investmentValue" value="₹2 Crore"><span class="card">₹2 Crore</span></label>
+          <label><input type="radio" name="investmentValue" value="₹5 Crore+"><span class="card">₹5 Crore+</span></label>
+          <label><input type="radio" name="investmentValue" value="__other__"><span class="card">Other</span></label>
+        </div>
+        <div class="other-in" id="invOther"><input type="text" name="investmentValueOther" placeholder="Specify amount"></div>
+        <div class="err-msg">Please select an investment value.</div>
+      </div>
+      <div class="field">
+        <label class="lbl" for="motivation">What motivated you to apply for this limited investment opportunity?</label>
+        <textarea id="motivation" name="motivation"></textarea>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span class="num">III.</span><h2>Beyond Capital</h2></div>
+      <div class="field">
+        <label class="lbl" for="valueBeyond">What value, experience, network or expertise could you bring to Culture Circle beyond your investment?</label>
+        <textarea id="valueBeyond" name="valueBeyond"></textarea>
+      </div>
+      <div class="field">
+        <label class="lbl">Which of the following best describes how you could support Culture Circle? <span style="text-transform:none;letter-spacing:0;color:var(--faint)">(select all that apply)</span></label>
+        <div class="chips" id="supportChips">
+          <label><input type="checkbox" name="supportAreas" value="Strategic guidance"><span class="chip">Strategic guidance</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Brand partnerships"><span class="chip">Brand partnerships</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Hiring & Talent"><span class="chip">Hiring &amp; Talent</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Fundraising introductions"><span class="chip">Fundraising introductions</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Retail & Distribution"><span class="chip">Retail &amp; Distribution</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Celebrity / Creator network"><span class="chip">Celebrity / Creator network</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Technology"><span class="chip">Technology</span></label>
+          <label><input type="checkbox" name="supportAreas" value="International expansion"><span class="chip">International expansion</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Media & PR"><span class="chip">Media &amp; PR</span></label>
+          <label><input type="checkbox" name="supportAreas" value="Consumer & Brand Building"><span class="chip">Consumer &amp; Brand Building</span></label>
+          <label><input type="checkbox" name="supportAreas" value="__other__" id="supOtherCb"><span class="chip">Other</span></label>
+        </div>
+        <div class="other-in" id="supOther"><input type="text" name="supportAreasOther" placeholder="Tell us how"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span class="num">IV.</span><h2>Track Record</h2></div>
+      <div class="field">
+        <label class="lbl">Have you previously invested in startups or private companies?</label>
+        <div class="seg">
+          <label><input type="radio" name="previouslyInvested" value="Yes"><span>Yes</span></label>
+          <label><input type="radio" name="previouslyInvested" value="No"><span>No</span></label>
+        </div>
+      </div>
+      <div class="field" id="notableField" style="display:none">
+        <label class="lbl" for="notableInvestments">Please tell us about any notable investments or sectors you've invested in.</label>
+        <textarea id="notableInvestments" name="notableInvestments"></textarea>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="sec-head"><span class="num">V.</span><h2>Final Details</h2></div>
+      <div class="field" data-f="whyStrong">
+        <label class="lbl" for="whyStrong">This allocation is limited. Why do you believe you'd be a strong addition to our investor community? <span class="req">*</span></label>
+        <textarea id="whyStrong" name="whyStrong"></textarea>
+        <div class="err-msg">This question is required.</div>
+      </div>
+      <div class="field">
+        <label class="lbl" for="questions">Do you have any additional questions to ask us before committing?</label>
+        <textarea id="questions" name="questions"></textarea>
+        <div class="hint">Our deck and data pack is <a href="https://docsend.com/view/s/twpurn74djrqmvz5" target="_blank" rel="noopener">here</a>. Go through it before you ask.</div>
+      </div>
+
+      <div class="field" data-f="acks" style="margin-top:36px">
+        <label class="lbl">Acknowledgements <span class="req">*</span></label>
+        <div class="acks">
+          <label class="ack"><input type="checkbox" name="ackNoGuarantee"><span class="box">✓</span><p>I understand that submitting this expression of interest does not guarantee an investment allocation.</p></label>
+          <label class="ack"><input type="checkbox" name="ackMinTicket"><span class="box">✓</span><p>I understand that the minimum investment commitment for this round is ₹50,00,000.</p></label>
+          <label class="ack"><input type="checkbox" name="ackNextSteps"><span class="box">✓</span><p>If selected, I am comfortable participating in the next steps of the investment process, including any required diligence and documentation.</p></label>
+        </div>
+        <div class="err-msg">All three acknowledgements are required.</div>
+      </div>
+    </div>
+
+    <div class="form-error" id="formError">Something went wrong while submitting. Please try again, or write to us directly.</div>
+
+    <div class="submit-row">
+      <button type="submit" class="submit" id="submitBtn">Submit Application</button>
+      <div class="submit-note">Your details are shared only with the Culture Circle founding team.</div>
+    </div>
+  </form>
+
+  <section id="success">
+    <div class="ring">✓</div>
+    <h2>Application received.</h2>
+    <p>Thank you for your interest in Culture Circle. Shortlisted applicants will hear from us within 7 days. We do not respond to every application.</p>
+  </section>
+</main>
+
+<footer><a href="https://culture-circle.com" target="_blank" rel="noopener">Culture Circle</a> &nbsp;·&nbsp; Limited Investor Allocation</footer>
+
+<script>
+const ENDPOINT = "__ENDPOINT__";
+
+const $ = s => document.querySelector(s);
+const form = $('#eoi');
+
+// Other toggles
+document.querySelectorAll('input[name=investmentValue]').forEach(r =>
+  r.addEventListener('change', () => $('#invOther').classList.toggle('show', $('input[name=investmentValue]:checked')?.value === '__other__')));
+$('#supOtherCb').addEventListener('change', e => $('#supOther').classList.toggle('show', e.target.checked));
+document.querySelectorAll('input[name=previouslyInvested]').forEach(r =>
+  r.addEventListener('change', () => $('#notableField').style.display =
+    ($('input[name=previouslyInvested]:checked')?.value === 'Yes') ? '' : 'none'));
+
+function fieldVal(name){ return form.elements[name] ? form.elements[name].value.trim() : ''; }
+
+function collect(){
+  const inv = $('input[name=investmentValue]:checked');
+  const support = [...document.querySelectorAll('input[name=supportAreas]:checked')]
+    .map(c => c.value === '__other__' ? ('Other: ' + fieldVal('supportAreasOther')) : c.value);
+  return {
+    website: fieldVal('website'),
+    email: fieldVal('email'),
+    fullName: fieldVal('fullName'),
+    mobile: fieldVal('mobile'),
+    city: fieldVal('city'),
+    occupation: fieldVal('occupation'),
+    profile: fieldVal('profile'),
+    investmentValue: inv ? (inv.value === '__other__' ? ('Other: ' + fieldVal('investmentValueOther')) : inv.value) : '',
+    motivation: fieldVal('motivation'),
+    valueBeyond: fieldVal('valueBeyond'),
+    supportAreas: support,
+    previouslyInvested: $('input[name=previouslyInvested]:checked')?.value || '',
+    notableInvestments: fieldVal('notableInvestments'),
+    whyStrong: fieldVal('whyStrong'),
+    questions: fieldVal('questions'),
+    ackNoGuarantee: form.elements['ackNoGuarantee'].checked,
+    ackMinTicket: form.elements['ackMinTicket'].checked,
+    ackNextSteps: form.elements['ackNextSteps'].checked
+  };
+}
+
+function setInvalid(name, bad){
+  const el = document.querySelector(`.field[data-f=${name}]`);
+  if (el) el.classList.toggle('invalid', bad);
+  return bad;
+}
+
+function validate(d){
+  let bad = false;
+  bad = setInvalid('fullName', !d.fullName) || bad;
+  bad = setInvalid('email', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(d.email)) || bad;
+  bad = setInvalid('mobile', !/^[+()\-.\s\d]{8,18}$/.test(d.mobile) || (d.mobile.replace(/\D/g,'').length < 8)) || bad;
+  bad = setInvalid('city', !d.city) || bad;
+  bad = setInvalid('occupation', !d.occupation) || bad;
+  bad = setInvalid('investmentValue', !d.investmentValue || d.investmentValue === 'Other: ') || bad;
+  bad = setInvalid('whyStrong', !d.whyStrong) || bad;
+  bad = setInvalid('acks', !(d.ackNoGuarantee && d.ackMinTicket && d.ackNextSteps)) || bad;
+  return !bad;
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  $('#formError').classList.remove('show');
+  const d = collect();
+  if (!validate(d)) {
+    document.querySelector('.field.invalid')?.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
+  }
+  const btn = $('#submitBtn');
+  btn.disabled = true; btn.textContent = 'Submitting…';
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'text/plain;charset=utf-8'},
+      body: JSON.stringify(d)
+    });
+    const out = await res.json();
+    if (!out.ok) throw new Error(out.error || 'submit failed');
+    form.style.display = 'none';
+    document.querySelector('.hero').style.display = 'none';
+    document.querySelector('.intro').style.display = 'none';
+    $('#success').style.display = 'block';
+    window.scrollTo({top: 0});
+  } catch (err) {
+    $('#formError').classList.add('show');
+    btn.disabled = false; btn.textContent = 'Submit Application';
+  }
+});
+</script>
+</body>
+</html>
